@@ -1,0 +1,19 @@
+﻿@page
+@model OdeToFood_Pluralsight.Pages.Restaurants.ListModel
+@{
+}
+<h1>Restaurants</h1>
+
+<table class="table">
+    @foreach(var restaurant in Model.Restaurant)
+    {
+        <tr>
+            <td>@restaurant.Name</td>
+            <td>@restaurant.Location</td>
+            <td>@restaurant.Cuisine</td>
+        </tr>
+    }
+</table>
+<div>
+    @Model.Message;
+</div>
