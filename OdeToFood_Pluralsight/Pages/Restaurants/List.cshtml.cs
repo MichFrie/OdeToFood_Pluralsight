@@ -17,16 +17,20 @@ namespace OdeToFood_Pluralsight.Pages.Restaurants
 
         public string Message { get; set; }
         public IEnumerable<Restaurant> Restaurant{ get; set; }
+        
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
 
         public ListModel(IConfiguration config, IRestaurantData restaurantData)
         {
             this.config = config;
             this.restaurantData = restaurantData;
         }
-        public void OnGet()
+        public void OnGet(string searchTerm)
         {
+               
             Message = config["Message"];
-            Restaurant = restaurantData.GetAll();
+            Restaurant = restaurantData.GetRestaurantsByName(SearchTerm);
         }
     }
 }
